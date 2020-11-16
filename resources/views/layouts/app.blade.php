@@ -25,6 +25,33 @@
         ">
                <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css"> 
 
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="{{asset('public/panel/css/animate.css')}}">
+  <!-- Icomoon Icon Fonts-->
+  <link rel="stylesheet" href="{{asset('public/panel/css/icomoon.css')}}">
+  <!-- Bootstrap  -->
+  <link rel="stylesheet" href="{{asset('public/panel/css/bootstrap.css')}}">
+
+  <!-- Flexslider  -->
+  <link rel="stylesheet" href="{{asset('public/panel/css/flexslider.css')}}">
+
+  <!-- Theme style  -->
+  <link rel="stylesheet" href="{{asset('public/panel/css/style.css')}}">
+
+  <!-- Modernizr JS -->
+  <script src="{{asset('public/panel/js/modernizr-2.6.2.min.js')}}"></script>
+  <!-- FOR IE9 below -->
+  <!--[if lt IE 9]>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+
+
+
+
+
+
+
     </head>
     <body id="page-top">
         <!-- preloader -->
@@ -33,695 +60,96 @@
         </div>
         <!-- wrapper -->
        
-            @php
-
-            $category = DB::table('categories')->get();
-           
-           @endphp
          @guest
+  
+         <nav class="fh5co-nav" role="navigation">
+          <!-- <div class="top-menu"> -->
+            <div class="container">
+              <div class="row">
+                <div class="col-xs-12 text-center logo-wrap">
+                  <div id="fh5co-logo"><a href="index.html">Tasty<span>.</span></a></div>
+                </div>
+                <div class="col-xs-12 text-center menu-1 menu-wrap">
+                  <ul>
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li class="has-dropdown">
+                      <a href="gallery.html">Gallery</a>
+                      <ul class="dropdown">
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Food</a></li>
+                        <li><a href="#">Coffees</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="reservation.html">Reservation</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="{{ route('login') }}">Log in</a></li>
+                    <li><a href="{{ route('register') }}">Register</a></li>
 
-         <style>
-
-    
-            .dropdown-submenu {
-                position: relative;
-            }
-            
-            .dropdown-submenu>.dropdown-menu {
-                top: 0;
-                left: 100%;
-                margin-top: -6px;
-                margin-left: -1px;
-                -webkit-border-radius: 0 6px 6px 6px;
-                -moz-border-radius: 0 6px 6px;
-                border-radius: 0 6px 6px 6px;
-            }
-            
-            .dropdown-submenu:hover>.dropdown-menu {
-                display: block;
-            }
-            
-            .dropdown-submenu>a:after {
-                display: block;
-                content: " ";
-                float: right;
-                width: 0;
-                height: 0;
-                border-color: transparent;
-                border-style: solid;
-                border-width: 5px 0 5px 5px;
-                border-left-color: #ccc;
-                margin-top: 5px;
-                margin-right: -10px;
-            }
-            
-            .dropdown-submenu:hover>a:after {
-                border-left-color: #fff;
-            }
-            
-            .dropdown-submenu.pull-left {
-                float: none;
-            }
-            
-            .dropdown-submenu.pull-left>.dropdown-menu {
-                left: -100%;
-                margin-left: 10px;
-                -webkit-border-radius: 6px 0 6px 6px;
-                -moz-border-radius: 6px 0 6px 6px;
-                border-radius: 6px 0 6px 6px;
-            }
-            </style>
-         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                        <a class="navbar-brand" href="#">Navbar</a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                          <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                          <ul class="navbar-nav">
-                            <li class="nav-item active">
-                              <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link"  href="{{ route('login') }}">Log in</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="{{ route('register') }}">Register</a>
-                            </li>
-                            <ul>
-                            <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             All Categories          </a>
-                              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                
-                                @foreach($category as $cat)
-                                <a class="dropdown-item" href="">{{ $cat->category_name }}</a>
-                                @endforeach
-                                    
-                    
-                              </div>
-                            </li>
-                          </ul>
-                    
-                          <form class="form-inline my-2 my-lg-0" method="GET" action="">
-                            <input class="form-control mr-sm-2"  name="query" type="text" placeholder="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                          </form>
-
-                          
-                    
-                          {{-- <form method="GET" action="{{ route('search') }}">
-                            <button class="src-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
-                            <input class="src-input" name="query" type="text" placeholder="Type of search">
-                        </form> --}}
-                        </div>
-                      </nav>
-
-                     
-  <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              CategoriesWithSubcategory
-            </button>
-            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                @foreach($category as $cat)
-                <li class="dropdown-submenu">
-                  <a  class="dropdown-item" tabindex="-1" href="#">{{ $cat->category_name }}</a>
-                  @php
-                  $subcategory = DB::table('subcategories')->where('category_id',$cat->id)->get();
-                    @endphp
-                
-                  <ul class="dropdown-menu">
-                    @foreach($subcategory as $row)
-                    <li class="dropdown-item"><a tabindex="-1" href="#">{{ $row->subcategory_name }}</a></li>
-                    @endforeach
-                </ul>
-                </li>
-                @endforeach
-              </ul>
-        </div>
+                    <li><a href="contact.html">Contact</a></li>
+                  </ul>
+                </div>
+              </div>
+              
+            </div>
+          <!-- </div> -->
+        </nav>
+      <br><br><br><br><br><br><br>
          @else
-            <!-- header area -->
-            <header class="header_area">
-                <!-- logo -->
-                <div class="sidebar_logo">
-                    <a href="index.html">
-  <img src="{{asset('public/panel/assets/images/logo.png')}}" alt="" class="img-fluid logo1">
-   <img src="{{asset('public/panel/assets/images/logo_small.png')}}" alt="" class="img-fluid logo2">
-                    </a>
-                </div>
-                <div class="sidebar_btn">
-                    <button class="sidbar-toggler-btn"><i class="fas fa-bars"></i></button>
-                </div>
-                <ul class="header_menu">
-                    <li><a href="#" class="search_btn" data-toggle="modal" data-target="#myModal"><i class="fas fa-search"></i></a>
-                        <div class="modal fade search_box" id="myModal">
-                              <button type="button" class="close m-2 text-white float-right" data-dismiss="modal">&times;</button>
-                              <form action="#" class="modal-dialog modal-lg">
-                                
-                                <div class="modal-content bg-transparent">
-                                      <!-- Modal body -->
-                                      <div class="modal-body">
-                                        <input class="form-control bg-transparent text-white form-control-lg"  type="text" placeholder="Search...">
-                                        <button class="btn btn-lg submit-btn" type="submit">Search</button>
-                                      </div>
-                                </div>
-                                 
-                              </form>
-                        </div>
-                    </li>
-                    <li><a data-toggle="dropdown" href="#"><i class="far fa-envelope"></i><span>4</span></a>
-                        <div class="dropdown_wrapper messages_item dropdown-menu dropdown-menu-right">
-                            <div class="dropdown_header">
-                                <p>you have 4 messages</p>
-                            </div>
-                            <ul class="dropdown_body nice_scroll scrollbar">
-                                <li>
-                                    <a href="#">
-                                        <div class="img-part">
-                                            <img src="{{asset('public/panel/assets/images/user1.jpg')}}" alt="" class="img-fluid">
-                                        </div>
-                                        <div class="text-part">
-                                            <h6>Madelyn <span><i class="far fa-clock"></i> today</span></h6>
-                                            <p>Hello Sam...</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img-part">
-                                            <img src="{{asset('public/panel/assets/images/user2.jpg')}}" alt="" class="img-fluid">
-                                        </div>
-                                        <div class="text-part">
-                                            <h6>Melvin <span><i class="far fa-clock"></i> today</span></h6>
-                                            <p>Hello jhon...</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img-part">
-                                            <img src="{{asset('public/panel/assets/images/user3.jpg')}}" alt="" class="img-fluid">
-                                        </div>
-                                        <div class="text-part">
-                                            <h6>Olinda <span><i class="far fa-clock"></i> today</span></h6>
-                                            <p>Hello jhon...</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img-part">
-                                            <img src="{{asset('public/panel/assets/images/user1.jpg')}}" alt="" class="img-fluid">
-                                        </div>
-                                        <div class="text-part">
-                                            <h6>Johnson <span><i class="far fa-clock"></i> today</span></h6>
-                                            <p>Hello Olinda...</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img-part">
-                                            <img src="{{asset('public/panel/assets/images/user3.jpg')}}" alt="" class="img-fluid">
-                                        </div>
-                                        <div class="text-part">
-                                            <h6>Madelyn <span><i class="far fa-clock"></i> today</span></h6>
-                                            <p>Hello Sam...</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img-part">
-                                            <img src="{{asset('public/panel/assets/images/user2.jpg')}}" alt="" class="img-fluid">
-                                        </div>
-                                        <div class="text-part">
-                                            <h6>Melvin <span><i class="far fa-clock"></i> today</span></h6>
-                                            <p>Hello jhon...</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img-part">
-                                            <img src="{{asset('public/panel/assets/images/user3.jpg')}}" alt="" class="img-fluid">
-                                        </div>
-                                        <div class="text-part">
-                                            <h6>Olinda <span><i class="far fa-clock"></i> today</span></h6>
-                                            <p>Hello jhon...</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img-part">
-                                            <img src="{{asset('public/panel/assets/images/user1.jpg')}}" alt="" class="img-fluid">
-                                        </div>
-                                        <div class="text-part">
-                                            <h6>Johnson <span><i class="far fa-clock"></i> today</span></h6>
-                                            <p>Hello Olinda...</p>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="dropdown_footer">
-                                <a href="#">See All Messages</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li><a href="#" data-toggle="dropdown"><i class="far fa-bell"></i><span>9</span></a>
-                        <div class="dropdown_wrapper notification_item dropdown-menu dropdown-menu-right">
-                            <div class="dropdown_header">
-                                <p>You have 9 notifications</p>
-                            </div>
-                            <ul class="dropdown_body scrollbar nice_scroll">
-                                <li>
-                                    <a href="#">
-                                        <div class="img-part">
-                                            <span class="text-success"><i class="fas fa-users"></i></span>
-                                        </div>
-                                        <div class="text-part">
-                                            <p>5 new members joined</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img-part">
-                                            <span class="text-danger"><i class="fas fa-exclamation-triangle"></i></span>
-                                        </div>
-                                        <div class="text-part">
-                                            <p> Very long description here that may...</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img-part">
-                                            <span class="text-success"><i class="fas fa-cart-plus"></i></span>
-                                        </div>
-                                        <div class="text-part">
-                                            <p> 25 sales made</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img-part">
-                                            <span class="text-warning"><i class="fas fa-user"></i></span>
-                                        </div>
-                                        <div class="text-part">
-                                            <p> You changed your username</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img-part">
-                                            <span class="text-success"><i class="fas fa-users"></i></span>
-                                        </div>
-                                        <div class="text-part">
-                                            <p>5 new members joined</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img-part">
-                                            <span class="text-danger"><i class="fas fa-exclamation-triangle"></i></span>
-                                        </div>
-                                        <div class="text-part">
-                                            <p> Very long description here that may...</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img-part">
-                                            <span class="text-success"><i class="fas fa-cart-plus"></i></span>
-                                        </div>
-                                        <div class="text-part">
-                                            <p> 25 sales made</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="img-part">
-                                            <span class="text-warning"><i class="fas fa-user"></i></span>
-                                        </div>
-                                        <div class="text-part">
-                                            <p> You changed your username</p>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="dropdown_footer">
-                                <a href="#">view All</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li><a data-toggle="dropdown" href="#"><i class="far fa-user"></i></a>
-                            <div class="user_item dropdown-menu dropdown-menu-right">
-                                <div class="admin">
-                                    <a href="#" class="user_link"><img src="{{asset('public/panel/assets/images/download (14).jpg')}}" alt=""></a>
-                                </div>
-                            <ul>
-                                
-                                <li><a href="#"><span><i class="fas fa-user"></i></span> User Profile</a></li>
-                                <li><a href=" "><span><i class="fas fa-cogs"></i></span>  Password Change</a></li>
-                                <li>
+           
+         <li>
 
-                                   <a href="{{ route('user.logout') }}"><span><i class="fas fa-unlock-alt"></i></span> Logout</a>
+            <a href="{{ route('user.logout') }}"><span><i class="fas fa-unlock-alt"></i></span> Logout</a>
 
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-
-                        <a class="responsive_menu_toggle" href="#"><i class="fas fa-bars"></i></a></li>
-                </ul>
-            </header><!-- / header area -->
-            <!-- sidebar area -->
-            <aside class="sidebar-wrapper ">
-              <nav class="sidebar-nav">
-                 <ul class="metismenu" id="menu1">
-                    <li class="single-nav-wrapper">
-                        <a href="index.html" class="menu-item">
-                            <span class="left-icon"><i class="fas fa-home"></i></span>
-                            <span class="menu-text">home</span>
-                        </a>
-                      </li>
-                    <li class="single-nav-wrapper">
-                          <a class="menu-item" href="fomrs_editor_ch.html" aria-expanded="false">
-                            <span class="left-icon"><i class="far fa-edit"></i></span>
-                              <span class="menu-text">Forms</span>
-                          </a>
-                      </li>
-                      <li class="single-nav-wrapper">
-                          <a class="has-arrow menu-item" href="#" aria-expanded="false">
-                            <span class="left-icon"><i class="fas fa-table"></i></span>
-                              <span class="menu-text">table</span>
-                          </a>
-                            <ul class="dashboard-menu">
-                              <li><a href="basic_table.html">Basic table</a></li>
-                              <li><a href="data_table.html">data table</a></li>
-                            </ul>
-                      </li>
-                      <li class="single-nav-wrapper">
-                          <a class="has-arrow menu-item" href="#" aria-expanded="false">
-                            <span class="left-icon"><i class="fas fa-chart-line"></i></span>
-                            <span class="menu-text">Charts</span>
-                          </a>
-                            <ul class="dashboard-menu">
-                              <li><a href="chart-float.html">Float Chart</a></li>
-                              <li><a href="chart-float.html">Float Chart</a></li>
-                              <li><a href="chart-float.html">Float Chart</a></li>
-                           </ul>
-                      </li>
-                      <li class="single-nav-wrapper">
-                          <a class="has-arrow menu-item" href="#" aria-expanded="false">
-                            <span class="left-icon"><i class="fas fa-sort-alpha-down-alt"></i></span>
-                            <span class="menu-text">UI Elements</span>
-                          </a>
-                            <ul class="dashboard-menu">
-                                <li><a href="typography.html">Typography</a></li>
-                                <li><a href="button.html">Buttons</a></li>
-                                <li><a href="notification.html">Notification</a></li>
-                                <li><a href="panels.html">Panels</a></li>
-                                <li><a href="tabs.html">Tab</a></li>
-                                <li><a href="modals.html">Modals</a></li>
-                                <li><a href="progressbars.html">Progressber</a></li>
-                                <li><a href="list.html">List View</a></li>
-                                <li><a href="icheck_toggle_pagination.html">iCheck, Toggle</a></li>
-                                <li><a href="label-badge-alert.html">labels, Badges</a></li>
-                                <li><a href="treeview.html">Tree View</a></li>
-                           </ul>
-                      </li>
-                      <li class="single-nav-wrapper">
-                          <a class="has-arrow menu-item" href="#" aria-expanded="false">
-                            <span class="left-icon"><i class="fas fa-map-marker-alt"></i></span>
-                            <span class="menu-text">Maps</span>
-                          </a>
-                          <ul class="dashboard-menu">
-                            <li><a href="#">Amcharts Maps</a></li>
-                            <li><a href="#">Data Maps</a></li>
-                            <li><a href="#">Jvector Maps</a></li>
-                            <li><a href="#">Google map</a></li>
-                            <li><a href="#">Snazzy Map</a></li>
-                          </ul>
-                      </li>
-                      <li class="single-nav-wrapper">
-                          <a class="has-arrow menu-item" href="#" aria-expanded="false">
-                            <span class="left-icon"><i class="far fa-envelope"></i></span>
-                            <span class="menu-text">Mailbox</span>
-                          </a>
-                          <ul class="dashboard-menu">
-                            <li><a href="#">Mailbox</a></li>
-                            <li><a href="#">Mailbox Details</a></li>
-                            <li><a href="#">Compose</a></li>
-                          </ul>
-                      </li>
-                      <li class="single-nav-wrapper">
-                          <a class="has-arrow menu-item" href="#" aria-expanded="false">
-                            <span class="left-icon"><i class="fas fa-mobile-alt"></i></span>
-                            <span class="menu-text">App View</span>
-                          </a>
-                          <ul class="dashboard-menu">
-                            <li><a href="invoice.html">Invoice</a></li>
-                            <li><a href="#">Vertical timeline</a></li>
-                            <li><a href="#">Horizontal timeline</a></li>
-                            <li><a href="#">Pricing Table</a></li>
-                          </ul>
-                      </li>
-                      <li class="single-nav-wrapper">
-                          <a class="has-arrow menu-item" href="#" aria-expanded="false">
-                            <span class="left-icon"><i class="far fa-copy"></i></span>
-                            <span class="menu-text">Other pages</span>
-                          </a>
-                          <ul class="dashboard-menu">
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="registration.html">Register</a></li>
-                            <li><a href="screen_lock.html">screen lock</a></li>
-                            <li><a href="forget.html">forget Password</a></li>
-                          </ul>
-                      </li>
-                      <li class="single-nav-wrapper">
-                        <a href="#" class="menu-item">
-                            <span class="left-icon"><i class="fas fa-home"></i></span>
-                            <span class="menu-text">Calender</span>
-                        </a>
-                      </li>
-                      <li class="single-nav-wrapper">
-                        <a href="blank_page.html" class="menu-item">
-                            <span class="left-icon"><i class="fas fa-file"></i></span>
-                            <span class="menu-text">Blank Page</span>
-                        </a>
-                      </li>
-                    </ul>
-              </nav>
-            </aside><!-- /sidebar Area-->
+         </li>
 
 
          
 
 
   
-<div class="content_wrapper">
-    <!--middle content wrapper-->
-    <div class="middle_content_wrapper">
-        <!-- counter_area -->
-        <section class="counter_area">
-            <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="counter">
-                        <div class="counter_item">
-                             <span><i class="fa fa-code"></i></span>
-                              <h2 class="timer count-number" data-to="300" data-speed="1500"></h2>
-                        </div>
-                     
-                       <p class="count-text ">SomeText GoesHere</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="counter">
-                        <div class="counter_item">
-                            <span><i class="fa fa-coffee"></i></span>
-                             <h2 class="timer count-number" data-to="1700" data-speed="1500"></h2>
-                        </div>
-                        <p class="count-text ">SomeText GoesHere</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="counter">
-                        <div class="counter_item">
-                            <span><i class="fas fa-user"></i></span>
-                             <h2 class="timer count-number" data-to="11900" data-speed="1500"></h2>
-                        </div>
-                        <p class="count-text ">SomeText GoesHere</p>
-                          
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="counter">
-                        <div class="counter_item">
-                            <span><i class="fa fa-bug"></i></span>
-                             <h2 class="timer count-number" data-to="157" data-speed="1500"></h2>
-                        </div>
-                         <p class="count-text ">SomeText GoesHere</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--/ counter_area -->
-        <!-- table area -->
-        <section class="table_area">
-            <div class="panel">
-                <div class="panel_header">
-                    <div class="panel_title"><span>FooTable with row toggler, sorting, filter and pagination</span></div>
-                </div>
-                <div class="panel_body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead>
-                              <tr>
-                                  <th>ID</th>
-                                  <th>First Name</th>
-                                  <th>Last Name</th>
-                                  <th>Job Title</th>
-                                  <th>Started On</th>
-                                  <th data-hide="all">Date of Birth</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr>
-                                  <td>1</td>
-                                  <td>Dennise</td>
-                                  <td>Fuhrman</td>
-                                  <td>High School History Teacher</td>
-                                  <td>November 8th 2011</td>
-                                  <td>July 25th 1960</td>
-                              </tr>
-                              <tr>
-                                  <td>2</td>
-                                  <td>Elodia</td>
-                                  <td>Weisz</td>
-                                  <td>Wallpaperer Helper</td>
-                                  <td>October 15th 2010</td>
-                                  <td>March 30th 1982</td>
-                              </tr>
-                              <tr>
-                                  <td>3</td>
-                                  <td>Raeann</td>
-                                  <td>Haner</td>
-                                  <td>Internal Medicine Nurse Practitioner</td>
-                                  <td>November 28th 2013</td>
-                                  <td>February 26th 1966</td>
-                              </tr>
-                              <tr>
-                                  <td>4</td>
-                                  <td>Junie</td>
-                                  <td>Landa</td>
-                                  <td>Offbearer</td>
-                                  <td>October 31st 2010</td>
-                                  <td>March 29th 1966</td>
-                              </tr>
-                              <tr>
-                                  <td>5</td>
-                                  <td>Solomon</td>
-                                  <td>Bittinger</td>
-                                  <td>Roller Skater</td>
-                                  <td>December 29th 2011</td>
-                                  <td>September 22nd 1964</td>
-                              </tr>
-                              <tr>
-                                  <td>6</td>
-                                  <td>Bar</td>
-                                  <td>Lewis</td>
-                                  <td>Clown</td>
-                                  <td>November 12th 2012</td>
-                                  <td>August 4th 1991</td>
-                              </tr>
-                              <tr>
-                                  <td>7</td>
-                                  <td>Usha</td>
-                                  <td>Leak</td>
-                                  <td>Ships Electronic Warfare Officer</td>
-                                  <td>August 14th 2012</td>
-                                  <td>November 20th 1979</td>
-                              </tr>
-                              <tr>
-                                  <td>8</td>
-                                  <td>Lorriane</td>
-                                  <td>Cooke</td>
-                                  <td>Technical Services Librarian</td>
-                                  <td>September 21st 2010</td>
-                                  <td>April 7th 1969</td>
-                              </tr>
-                              <tr>
-                                  <td>9</td>
-                                  <td>Lorriane</td>
-                                  <td>Cooke</td>
-                                  <td>Technical Services Librarian</td>
-                                  <td>September 21st 2010</td>
-                                  <td>April 7th 1969</td>
-                              </tr>
-                          </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div> <!-- /table -->
-            <!-- chart area -->
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="panel chart_area">
-                        <div class="panel_header">
-                            <div class="panel_title">
-                                <span class="panel_icon"><i class="far fa-chart-bar"></i></span>
-                                <span>bar chat</span>
-                            </div>
-                        </div>
-                        <div class="panel_body">
-                            <div id="bar-chart">
-                                <div id="bar-legend"></div>
-                                <canvas id="bar-canvas" ></canvas>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                <div class="col-lg-4">
-                    <div class="panel">
-                        <div class="panel_header">
-                            <div class="panel_title">
-                                <span class="panel_icon"><i class="fas fa-chart-pie"></i></span>
-                                <span>pie chat</span>
-                            </div>
-                        </div>
-                        <div class="panel_body">
-                            <div id="piechart"></div>
-                        </div>
-                    </div> 
-                </div>
-            </div>
-        </section>                   
-    </div><!--/middle content wrapper-->
-</div><!--/ content wrapper -->
+
 
 
 @endguest
 
-<div class="container-fluid">
+
     @yield('content')
 
-</div>
+
         
 
 
-        </div><!--/ wrapper -->
+      <!-- jQuery -->
+<script src="{{asset('public/panel/js/jquery.min.js')}}"></script>
+<!-- jQuery Easing -->
+<script src="{{asset('public/panel/js/jquery.easing.1.3.js')}}"></script>
+<!-- Bootstrap -->
+<script src="{{asset('public/panel/js/bootstrap.min.js')}}"></script>
+<!-- Waypoints -->
+<script src="{{asset('public/panel/js/jquery.waypoints.min.js')}}"></script>
+<!-- Waypoints -->
+<script src="{{asset('public/panel/js/jquery.stellar.min.js')}}"></script>
+<!-- Flexslider -->
+<script src="{{asset('public/panel/js/jquery.flexslider-min.js')}}"></script>
+<script src="{{asset('public/panel/js/zoomerang.js')}}"></script>
+<!-- Main -->
+<script src="{{asset('public/panel/js/main.js')}}"></script>
+
+<script>
+    Zoomerang
+  .config({
+    maxHeight: 600,
+    maxWidth: 900,
+    bgColor: '#000',
+    bgOpacity: .85
+  })
+  .listen('[data-trigger="zoomerang"]')
+</script>
 
 
         <!-- jquery -->
-        <script src="{{asset('public/panel/assets/js/jquery.min.js')}}"></script>
+        {{-- <script src="{{asset('public/panel/assets/js/jquery.min.js')}}"></script> --}}
         <!-- popper Min Js -->
         <script src="{{asset('public/panel/assets/js/popper.min.js')}}"></script>
         <!-- Bootstrap Min Js -->
@@ -778,5 +206,7 @@
 
     </script>
      
+
+
     </body>
 </html>
