@@ -62,7 +62,7 @@
             </div>
             <div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 fh5co-item-wrap animate-box">
                 <div class="fh5co-item margin_top">
-                    <img src="{{asset('public/panel/assets/images/gallery_8.jpeg')}}" class="img-responsive" alt="Free Restaurant Bootstrap Website Template by FreeHTML5.co">
+                    <img src="{{asset('public/panel/images/gallery_8.jpeg')}}" class="img-responsive" alt="Free Restaurant Bootstrap Website Template by FreeHTML5.co">
                     <h3>Salted Fried Chicken</h3>
                     <span class="fh5co-price">$19<sup>.00</sup></span>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos nihil cupiditate ut vero alias quaerat inventore molestias vel suscipit explicabo.</p>
@@ -102,7 +102,7 @@
             </div>
 
             <div class="col-md-5 animate-box img-to-responsive animate-box" data-animate-effect="fadeInLeft">
-                    <img src="{{asset('public/panel/images/gallery_6.jpeg')}}images/person_1.jpg" alt="">
+                    <img src="{{asset('public/panel/images/person_1.jpg')}}" alt="">
             </div>
             <div class="col-md-7 animate-box" data-animate-effect="fadeInRight">
                 <blockquote>
@@ -127,7 +127,7 @@
                 <aside id="fh5co-slider-wrwap">
                 <div class="flexslider">
                     <ul class="slides">
-                       <li style="background-image: url({{asset('public/panel/images/gallery_6.jpeg')}}images/gallery_7.jpeg);">
+                       <li style="background-image: url({{asset('public/panel/images/gallery_6.jpeg')}});">
                            <div class="overlay-gradient"></div>
                            <div class="container-fluid">
                                <div class="row">
@@ -159,7 +159,7 @@
                                </div>
                            </div>
                        </li>
-                       <li style="background-image: url({{asset('public/panel/images/gallery_5.jpeg')}}.jpeg);">
+                       <li style="background-image: url({{asset('public/panel/images/gallery_5.jpeg')}});">
                            <div class="overlay-gradient"></div>
                            <div class="container-fluid">
                                <div class="row">
@@ -224,7 +224,7 @@
             </div>
             <div class="col-md-4">
                 <div class="fh5co-blog animate-box">
-                    <a href="#" class="blog-bg" style="background-image: url({{asset('public/panel/images/gallery_3.jpeg')}}.jpeg);"></a>
+                    <a href="#" class="blog-bg" style="background-image: url({{asset('public/panel/images/gallery_3.jpeg')}});"></a>
                     <div class="blog-text">
                         <span class="posted_on">Feb. 15th 2016</span>
                         <h3><a href="#">Focus On Uderwater</a></h3>
@@ -241,7 +241,7 @@
     </div>
 </div>
 
-<div id="fh5co-started" class="fh5co-section animate-box" style="background-image: url(images/hero_1.jpeg);" data-stellar-background-ratio="0.5">
+<div id="fh5co-started" class="fh5co-section animate-box" style="background-image: url({{asset('public/panel/images/hero_1.jpeg')}});" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row animate-box">

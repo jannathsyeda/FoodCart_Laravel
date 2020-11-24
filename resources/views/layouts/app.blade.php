@@ -11,9 +11,7 @@
         <!--bootstrap-->
         <link rel="stylesheet" href="{{asset('public/panel/assets/css/bootstrap.min.css')}}">
         <!--font awesome-->
-        <link rel="stylesheet" href="{{
-        asset('public/panel/assets/css/all.min.css')
-    }}">
+        <link rel="stylesheet" href="{{asset('public/panel/assets/css/all.css')}}">
         <!-- metis menu -->
         <link rel="stylesheet" href="{{asset('public/panel/assets/plugins/metismenu-3.0.4/assets/css/metisMenu.min.css')}}">
         <link rel="stylesheet" href="{{asset('public/panel/assets/plugins/metismenu-3.0.4/assets/css/mm-vertical-hover.css')}}">
@@ -24,6 +22,11 @@
         <link rel="stylesheet" href="{{ asset('public/panel/assets/css/style.css')}}
         ">
                <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css"> 
+
+
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
 
   <!-- Animate.css -->
   <link rel="stylesheet" href="{{asset('public/panel/css/animate.css')}}">
@@ -46,7 +49,7 @@
   <![endif]-->
 
 
-
+@stack('css')
 
 
 
@@ -62,23 +65,32 @@
        
          @guest
   
+
+
+   @php
+
+   $category = DB::table('categories')->get();
+      @endphp
+   
          <nav class="fh5co-nav" role="navigation">
           <!-- <div class="top-menu"> -->
             <div class="container">
               <div class="row">
                 <div class="col-xs-12 text-center logo-wrap">
-                  <div id="fh5co-logo"><a href="index.html">Tasty<span>.</span></a></div>
+                  <div id="fh5co-logo"><a href="index.html">Jannath's FoodCart<span></span></a></div>
                 </div>
                 <div class="col-xs-12 text-center menu-1 menu-wrap">
                   <ul>
                     <li class="active"><a href="index.html">Home</a></li>
                     <li><a href="menu.html">Menu</a></li>
                     <li class="has-dropdown">
-                      <a href="gallery.html">Gallery</a>
+
+                      <a href="gallery.html">Food Categories</a>
+          
                       <ul class="dropdown">
-                        <li><a href="#">Events</a></li>
-                        <li><a href="#">Food</a></li>
-                        <li><a href="#">Coffees</a></li>
+                         @foreach($category as $cat)
+                        <li><a href="#">{{$cat->category_name}}</a></li>
+                       @endforeach
                       </ul>
                     </li>
                     <li><a href="reservation.html">Reservation</a></li>
@@ -206,6 +218,13 @@
 
     </script>
      
+
+
+
+
+
+     
+     @stack('js')
 
 
     </body>
