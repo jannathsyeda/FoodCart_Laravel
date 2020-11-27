@@ -89,6 +89,51 @@
     </div>
 </div>
 
+@php
+   $featured = DB::table('products')->where('status',1)->orderBy('id','desc')->limit(12)->get();  
+@endphp
+
+{{-- -----------all dishes----------------- --}}
+<div id="fh5co-featured-menu" class="fh5co-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 fh5co-heading animate-box">
+                <h2>All Dishes</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ab debitis sit itaque totam, a maiores nihil, nulla magnam porro minima officiis! Doloribus aliquam voluptates corporis et tempora consequuntur ipsam, itaque, nesciunt similique commodi omnis. Ad magni perspiciatis, voluptatum repellat.</p>
+                    </div>
+                </div>
+            </div>
+            @foreach($featured as $row)
+
+            <div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 fh5co-item-wrap animate-box">
+                <div class="fh5co-item">
+                    <img src="{{ asset( $row->image_one )}}" class="img-responsive" alt="Free Restaurant Bootstrap Website Template by FreeHTML5.co">
+                    <h3>Bake Potato Pizza</h3>
+                   
+                    @if($row->discount_price == NULL)
+                    <div class="product_price discount">${{ $row->selling_price }}<span> </div>
+                          @else
+                    <div class="product_price discount"><sup><span style="text-size:5px;color:red;">${{ $row->discount_price }}</span></sup>
+                        <span>${{ $row->selling_price }}</span></div>
+                          @endif
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos nihil cupiditate ut vero alias quaerat inventore molestias vel suscipit explicabo.</p>
+                    <button class="product_cart_button addcart" data-id="" style="color:black">Add to Cart</button>
+                </div>
+            </div>
+            <br>
+           @endforeach
+            {{-- <div class="clearfix visible-sm-block visible-xs-block"></div> --}}
+           
+          
+        </div>
+    </div>
+</div>
+
+{{-- -----------end all dishes-------------- --}}
+
+
 <div id="fh5co-featured-testimony" class="fh5co-section">
     <div class="container">
         <div class="row">
